@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
+        'cnpj',
+        'cpf',
     ];
 
     /**
@@ -43,8 +46,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function routes()
+    public function propostas()
     {
-        return $this->hasMany(Route::class)->orderBy('created_at', 'desc')->get();
+        if ($this->type === 'investidor') {
+            return false;
+        }
+        return $this->hasMany(Proposta::class);
     }
+
+    public function investimentos()
+    {
+        if ($this->type === 'empreendedor') {
+            return false;
+        }
+        return $this->hasMany(Investimento::join('propostas', 'investimentos.proposta_id', '=', 'propostas.id')->where('investimentos.user_id', $this->id));
+    }
+
 }
