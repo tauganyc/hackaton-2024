@@ -15,7 +15,7 @@
         <div class="card shadow-lg border-0 rounded-4">
             <div class="card-body p-4">
                 <h4 class="card-title text-center mb-4 fw-bold">{{ __('Cadastro') }}</h4>
-                
+
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
@@ -58,16 +58,16 @@
                     <!-- Radio Button (Centralizado) -->
                     <div class="mb-3 text-center">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input class="form-check-input" type="radio" name="type" id="type" value="empresa" required>
                             <label class="form-check-label" for="inlineRadio1">Empresa</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <input class="form-check-input" type="radio" name="type" id="type" value="investidor">
                             <label class="form-check-label" for="inlineRadio2">Investidor</label>
                         </div>
                     </div>
 
-                 
+
                     <div class="d-flex justify-content-between align-items-center">
                         <a class="text-decoration-none small text-muted" href="{{ route('login') }}">
                             {{ __('Já está cadastrado?') }}
