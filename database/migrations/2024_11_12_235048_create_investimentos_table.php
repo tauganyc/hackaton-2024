@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('proposta_id');
             $table->foreign('proposta_id')->references('id')->on('propostas')->onDelete('cascade');
-            $table->decimal('valor', 9999999999999, 2);
+            $table->decimal('valor', 10, 2);
             $table->timestamps();
             $table->softDeletes();
         });
