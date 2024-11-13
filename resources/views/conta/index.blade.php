@@ -34,35 +34,37 @@
                 @if($user->contas->isEmpty())
                     <div class="mt-3">Nenhum lançamento encontrado.</div>
                 @else
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>tipo</th>
-                            <th>Valor</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($user->contas as $lancamento)
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped table-responsive scrollbar">
+                            <thead>
                             <tr>
-                                <td>{{ date('d/m/Y H:i:s', strtotime($lancamento->created_at)) }}</td>
-                                <td>{{ $lancamento->type }}</td>
-                                <td>R$ {{ number_format($lancamento->valor, 2, ',', '.') }}</td>
-                                <td>
-                                    @if(auth()->user()->can('investidor')
-                                    && $lancamento->proposta_id != null)
-                                        <a href="{{ route('investor.show', $lancamento->proposta_id) }}"
-                                           class="btn btn-info">Ver proposta</a>
-                                    @elseif(auth()->user()->can('empresa') && $lancamento->proposta_id != null)
-                                        <a href="{{ route('company.show', $lancamento->proposta_id) }}"
-                                           class="btn btn-info">Ver proposta</a>
-                                    @endif
-                                </td>
+                                <th>Data</th>
+                                <th>tipo</th>
+                                <th>Valor</th>
+                                <th></th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            @foreach($user->contas as $lancamento)
+                                <tr>
+                                    <td>{{ date('d/m/Y H:i:s', strtotime($lancamento->created_at)) }}</td>
+                                    <td>{{ $lancamento->type }}</td>
+                                    <td>R$ {{ number_format($lancamento->valor, 2, ',', '.') }}</td>
+                                    <td>
+                                        @if(auth()->user()->can('investidor')
+                                        && $lancamento->proposta_id != null)
+                                            <a href="{{ route('investor.show', $lancamento->proposta_id) }}"
+                                               class="btn btn-info">Ver proposta</a>
+                                        @elseif(auth()->user()->can('empresa') && $lancamento->proposta_id != null)
+                                            <a href="{{ route('company.show', $lancamento->proposta_id) }}"
+                                               class="btn btn-info">Ver proposta</a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @endif
             </div>
         </div>
@@ -113,8 +115,8 @@
 
 @endsection
 
-            <script>
-                setTimeout(function () {
-                    document.querySelector('.alert').remove();
-                }, 3000);
-            </script>
+<script>
+    setTimeout(function () {
+        document.querySelector('.alert').remove();
+    }, 3000);
+</script>

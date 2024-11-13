@@ -22,29 +22,31 @@
             @if($propostas->isEmpty())
                 <div class="mt-3">Nenhuma proposta foi enviada.</div>
             @else
-                <table class="table table-striped mt-3">
-                    <thead>
-                    <tr>
-                        <th scope="col">Título</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" class="w-25 text-center">Valor solicitado</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($propostas as $proposta)
+                <div class="table-responsive mt-3">
+                    <table class="table table-striped scroll-target table-responsive mt-3">
+                        <thead>
                         <tr>
-                            <td>{{$proposta->titulo}}</td>
-                            <td class="text-success">{{ $proposta->status }}</td>
-                            <td class="text-center">R$ {{ number_format($proposta->valor, 2, ',', '.') }}</td>
-                            <td class="w-25 text-center">
-                                <a href="{{ route('company.show', $proposta->id) }}"
-                                   class="btn btn-info">Ver</a>
-                            </td>
+                            <th scope="col">Título</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" class="w-25 text-center">Valor solicitado</th>
+                            <th></th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach ($propostas as $proposta)
+                            <tr>
+                                <td>{{$proposta->titulo}}</td>
+                                <td class="text-success">{{ $proposta->status }}</td>
+                                <td class="text-center">R$ {{ number_format($proposta->valor, 2, ',', '.') }}</td>
+                                <td class="w-25 text-center">
+                                    <a href="{{ route('company.show', $proposta->id) }}"
+                                       class="btn btn-info">Ver</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @endif
         </div>
     </div>
