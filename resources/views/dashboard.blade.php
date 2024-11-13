@@ -7,7 +7,7 @@
             <p>A força de uma pequena ou média empresa não se mede apenas pelos lucros ou pela quantidade de produtos
                 que vende, mas pela coragem e resiliência de seus donos e colaboradores. E não há maior prova disso do
                 que a capacidade de recomeçar depois de um desastre inesperado, como uma enchente que destrói tudo o que
-                foi construído com tanto esforço e dedicação. Com isso, a Orange Investments traz uma forma lucrativa de
+                foi construído com tanto esforço e dedicação. Com isso, nós da ApoiaPro traz uma forma lucrativa de
                 colocar sua empresa de volta no mercado!</p>
         </div>
     </div>
