@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->decimal('valor', 10, 2);
+            $table->decimal('valor', 15, 2);
+            $table->string('type')->default('deposito')->comment('deposito ou retirada');
             $table->timestamps();
             $table->softDeletes();
         });

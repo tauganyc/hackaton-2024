@@ -24,6 +24,7 @@ class User extends Authenticatable
         'type',
         'cnpj',
         'cpf',
+        'saldo',
     ];
 
     /**
@@ -60,6 +61,11 @@ class User extends Authenticatable
             return false;
         }
         return $this->hasMany(Investimento::join('propostas', 'investimentos.proposta_id', '=', 'propostas.id')->where('investimentos.user_id', $this->id));
+    }
+
+    public function contas()
+    {
+        return $this->hasMany(Conta::class)->orderBy('created_at', 'desc');
     }
 
 }

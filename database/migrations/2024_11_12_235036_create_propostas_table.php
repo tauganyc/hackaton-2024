@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('titulo', 255);
             $table->text('descricao');
-            $table->decimal('valor', 10, 2);
-            $table->string('status');
+            $table->decimal('valor', 15, 2);
+            $table->string('status')->default('aberto');
             $table->timestamps();
             $table->softDeletes();
         });

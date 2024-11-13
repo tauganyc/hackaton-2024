@@ -9,9 +9,18 @@ class Proposta extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'empresa_id',
-        'investidor_id',
+        'user_id',
+        'titulo',
+        'descricao',
         'valor',
         'status',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function investimentos()
+    {
+        return $this->hasMany(Investimento::class);
+    }
 }

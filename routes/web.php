@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\RouteController;
+use App\Http\Controllers\ContaController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/company', [EmpresaController::class, 'index'])->name('company');
+    Route::get('/company/create', [EmpresaController::class, 'create'])->name('company.create');
+    Route::post('/company/store', [EmpresaController::class, 'store'])->name('company.store');
+    Route::get('/company/{id}', [EmpresaController::class, 'show'])->name('company.show');
+
+
+    Route::get('/extract', [ContaController::class, 'index'])->name('extract');
+    Route::post('/extract/deposit', [ContaController::class, 'deposit'])->name('extract.deposit');
+    Route::post('/extract/withdraw', [ContaController::class, 'withdraw'])->name('extract.withdraw');
 });
 
 
