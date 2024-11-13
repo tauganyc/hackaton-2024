@@ -6,14 +6,15 @@ use App\Models\Investimento;
 use App\Models\Proposta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class EmpresaController extends Controller
 {
     public function index()
     {
         $user =  Auth::user();
-        if ($user->type == 'investidor') {
-            return redirect()->route('company')->with('error', 'Você não tem permissão para visualizar propostas');
+        if (!Gate::any(['empresa'])) {
+            return redirect()->back()->with('error', 'Você não tem permissão para visualizar propostas');
         }
         $propostas = $user->propostas;
 
@@ -23,12 +24,12 @@ class EmpresaController extends Controller
     public function show($id)
     {
         $user =  Auth::user();
-        if ($user->type == 'investidor') {
+        if (!Gate::any(['empresa'])) {
             return redirect()->route('company')->with('error', 'Você não tem permissão para visualizar propostas');
         }
         $proposta = $user->propostas()->where('id', $id)->first();
         if (!$proposta) {
-            return redirect()->route('company')->with('error', 'Proposta não encontrada');
+            return redirect()->back()->with('error', 'Proposta não encontrada');
         }
         $investimentos = Investimento::where('proposta_id', $proposta->id)->sum('valor');
 
@@ -37,8 +38,8 @@ class EmpresaController extends Controller
     public function create()
     {
         $user =  Auth::user();
-        if ($user->type == 'investidor') {
-            return redirect()->route('company')->with('error', 'Você não tem permissão para criar propostas');
+        if (!Gate::any(['empresa'])) {
+            return redirect()->back()->with('error', 'Você não tem permissão para criar propostas');
         }
         return view('empresa.create');
     }
@@ -55,8 +56,8 @@ class EmpresaController extends Controller
         ]
         );
         $user =  Auth::user();
-        if ($user->type == 'investidor') {
-            return redirect()->route('company')->with('error', 'Você não tem permissão para criar propostas');
+        if (!Gate::any(['empresa'])) {
+            return redirect()->back()->with('error', 'Você não tem permissão para criar propostas');
         }
         $proposta = Proposta::create(
             [
