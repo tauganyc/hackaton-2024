@@ -11,7 +11,7 @@
 </style>
 
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="col-md-6 col-lg-4">
+    <div class="col-12">
         <div class="card shadow-lg border-0 rounded-4">
             <div class="card-body p-4">
                 <h4 class="card-title text-center mb-4 fw-bold">{{ __('Cadastro') }}</h4>

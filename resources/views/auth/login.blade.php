@@ -22,7 +22,7 @@
 </style>
 
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="col-md-6 col-lg-4">
+    <div class="col-12">
         <div class="card shadow-lg border-0 rounded-4">
             <div class="card-body p-4">
                 <h4 class="card-title text-center mb-4 fw-bold">{{ __('Login') }}</h4>
@@ -55,7 +55,7 @@
                     </div>
 
 
-                    <!-- Remember Me -->
+{{--                    <!-- Remember Me -->--}}
 {{--                    <div class="block mt-4">--}}
 {{--                        <label for="remember_me" class="inline-flex items-center">--}}
 {{--                            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">--}}
@@ -65,7 +65,7 @@
 
                     <div class="flex items-center justify-end mt-4">
 
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
 {{--                        <a class="text-decoration-none small text-muted" href="{{ route('password.request') }}">--}}
 {{--                            {{ __('Esqueceu sua senha?') }}--}}
 {{--                        </a>--}}
