@@ -58,7 +58,7 @@
     </div>
     <!-- Modal deposito-->
     <div class="modal fade" id="depositar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered"> <!-- Added modal-dialog-centered here -->
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Depositar na conta</h1>
@@ -80,7 +80,7 @@
 
     <!-- Modal saque-->
     <div class="modal fade" id="sacar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered"> <!-- Added modal-dialog-centered here -->
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Sacar da conta</h1>
@@ -99,7 +99,8 @@
             </div>
         </div>
     </div>
-            @endsection
+
+@endsection
 
             <script>
                 setTimeout(function () {
