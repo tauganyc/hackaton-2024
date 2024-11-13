@@ -34,7 +34,7 @@
                     <tbody>
                     @foreach ($propostas as $proposta)
                         <tr>
-                            <td>{{$proposta->name}}</td>
+                            <td>{{$proposta->titulo}}</td>
                             <td class="text-success">{{ $proposta->status }}</td>
                             <td class="text-center">R$ {{ number_format($proposta->valor, 2, ',', '.') }}</td>
                             <td class="w-25 text-center">

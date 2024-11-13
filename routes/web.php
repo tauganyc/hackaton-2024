@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/company/create', [EmpresaController::class, 'create'])->name('company.create');
     Route::post('/company/store', [EmpresaController::class, 'store'])->name('company.store');
     Route::get('/company/{id}', [EmpresaController::class, 'show'])->name('company.show');
+    Route::post('/company/withdraw', [EmpresaController::class, 'withdraw'])->name('company.withdraw');
 
 
     Route::get('/extract', [ContaController::class, 'index'])->name('extract');
