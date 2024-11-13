@@ -65,10 +65,10 @@
 
                     <div class="flex items-center justify-end mt-4">
 
-                        <div class="d-flex justify-content-between align-items-center">
-                        <a class="text-decoration-none small text-muted" href="{{ route('password.request') }}">
-                            {{ __('Esqueceu sua senha?') }}
-                        </a>
+                        <div class="d-flex justify-content-center align-items-center">
+{{--                        <a class="text-decoration-none small text-muted" href="{{ route('password.request') }}">--}}
+{{--                            {{ __('Esqueceu sua senha?') }}--}}
+{{--                        </a>--}}
 
                         <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill">
                             {{ __('Entrar') }}
