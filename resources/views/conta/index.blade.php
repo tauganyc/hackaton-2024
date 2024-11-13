@@ -40,6 +40,7 @@
                             <th>Data</th>
                             <th>tipo</th>
                             <th>Valor</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,16 @@
                                 <td>{{ date('d/m/Y H:i:s', strtotime($lancamento->created_at)) }}</td>
                                 <td>{{ $lancamento->type }}</td>
                                 <td>R$ {{ number_format($lancamento->valor, 2, ',', '.') }}</td>
+                                <td>
+                                    @if(auth()->user()->can('investidor')
+                                    && $lancamento->proposta_id != null)
+                                        <a href="{{ route('investor.show', $lancamento->proposta_id) }}"
+                                           class="btn btn-info">Ver proposta</a>
+                                    @elseif(auth()->user()->can('empresa') && $lancamento->proposta_id != null)
+                                        <a href="{{ route('company.show', $lancamento->proposta_id) }}"
+                                           class="btn btn-info">Ver proposta</a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

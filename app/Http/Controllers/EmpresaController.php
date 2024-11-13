@@ -12,10 +12,10 @@ class EmpresaController extends Controller
 {
     public function index()
     {
-        $user =  Auth::user();
         if (!Gate::any(['empresa'])) {
             return redirect()->back()->with('error', 'Você não tem permissão para visualizar propostas');
         }
+        $user =  Auth::user();
         $propostas = $user->propostas;
 
         return view('empresa.index', ['propostas' => $propostas, 'user' => $user]);
@@ -37,14 +37,17 @@ class EmpresaController extends Controller
     }
     public function create()
     {
-        $user =  Auth::user();
         if (!Gate::any(['empresa'])) {
             return redirect()->back()->with('error', 'Você não tem permissão para criar propostas');
         }
+        $user =  Auth::user();
         return view('empresa.create');
     }
     public function store(Request $request)
     {
+        if (!Gate::any(['empresa'])) {
+            return redirect()->back()->with('error', 'Você não tem permissão para criar propostas');
+        }
         $request->validate([
             'titulo' => 'required',
             'descricao' => 'required',
@@ -56,9 +59,6 @@ class EmpresaController extends Controller
         ]
         );
         $user =  Auth::user();
-        if (!Gate::any(['empresa'])) {
-            return redirect()->back()->with('error', 'Você não tem permissão para criar propostas');
-        }
         $proposta = Proposta::create(
             [
                 'user_id' => $user->id,

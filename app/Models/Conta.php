@@ -15,6 +15,7 @@ class Conta extends Model
         'user_id',
         'valor',
         'type',
+        'proposta_id',
     ];
 
 }

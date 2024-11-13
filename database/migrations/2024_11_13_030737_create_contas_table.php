@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->decimal('valor', 15, 2);
             $table->string('type')->default('deposito')->comment('deposito ou retirada');
+            $table->string('proposta_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

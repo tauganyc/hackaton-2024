@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\InvestidorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/extract', [ContaController::class, 'index'])->name('extract');
     Route::post('/extract/deposit', [ContaController::class, 'deposit'])->name('extract.deposit');
     Route::post('/extract/withdraw', [ContaController::class, 'withdraw'])->name('extract.withdraw');
+
+    Route::get('/investor',[InvestidorController::class,'index'])->name('investor');
+    Route::get('/investor/{id}',[InvestidorController::class,'show'])->name('investor.show');
+    Route::post('/investor/invest',[InvestidorController::class,'invest'])->name('investor.invest');
 });
 
 
